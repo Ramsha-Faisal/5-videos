@@ -13,7 +13,7 @@
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:spanCount="2"
         tools:listitem="@layout/shop_row"
-
+        android:background="@color/purple_200"
         />
 
 

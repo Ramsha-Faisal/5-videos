@@ -12,12 +12,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.myapplication.databinding.ShopRowBinding;
 import com.example.myapplication.models.Product;
 
-   public class ShopListAdapter extends ListAdapter<Product, ShopListAdapter.ShopViewHolder> {
+public class ShopListAdapter extends ListAdapter<Product, ShopListAdapter.ShopViewHolder> {
+
+    ShopInterface shopInterface;
+    public ShopListAdapter(ShopInterface shopInterface) {
+        super(Product.itemCallback);
+        this.shopInterface = shopInterface;
+    }
 
 
-        public ShopListAdapter() {
-            super(Product.itemCallback);
-        }
+
 
         @NonNull
     @Override
@@ -25,7 +29,7 @@ import com.example.myapplication.models.Product;
 
             LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
             ShopRowBinding shopRowBinding = ShopRowBinding.inflate(layoutInflater, parent, false);
-
+            shopRowBinding.setShopInterface(shopInterface);
             return new ShopViewHolder(shopRowBinding);
     }
 

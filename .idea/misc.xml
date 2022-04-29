@@ -3,10 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Microsoft/AndroidStudioProjects/MyApplication/app/src/main/res/font/font.xml" value="0.1824074074074074" />
+        <entry key="..\:/Users/Microsoft/AndroidStudioProjects/MyApplication/app/src/main/res/font/open_sans.xml" value="0.1824074074074074" />
         <entry key="..\:/Users/Microsoft/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_main.xml" value="0.196875" />
+        <entry key="..\:/Users/Microsoft/AndroidStudioProjects/MyApplication/app/src/main/res/layout/cart_row.xml" value="0.22" />
+        <entry key="..\:/Users/Microsoft/AndroidStudioProjects/MyApplication/app/src/main/res/layout/fragment_cart.xml" value="0.1766304347826087" />
         <entry key="..\:/Users/Microsoft/AndroidStudioProjects/MyApplication/app/src/main/res/layout/fragment_product_detail.xml" value="0.1828125" />
         <entry key="..\:/Users/Microsoft/AndroidStudioProjects/MyApplication/app/src/main/res/layout/fragment_shop.xml" value="0.196875" />
         <entry key="..\:/Users/Microsoft/AndroidStudioProjects/MyApplication/app/src/main/res/layout/shop_row.xml" value="0.14" />
+        <entry key="..\:/Users/Microsoft/AndroidStudioProjects/MyApplication/app/src/main/res/menu/main_menu.xml" value="0.196875" />
+        <entry key="..\:/Users/Microsoft/AndroidStudioProjects/MyApplication/app/src/main/res/menu/menu.xml" value="0.196875" />
       </map>
     </option>
   </component>

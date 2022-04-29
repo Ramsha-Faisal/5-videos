@@ -18,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
+import com.example.myapplication.R;
 import com.example.myapplication.adapters.ShopListAdapter;
 import com.example.myapplication.databinding.FragmentShopBinding;
 import com.example.myapplication.models.Product;
@@ -28,10 +29,11 @@ import com.google.android.material.snackbar.Snackbar;
 import java.util.List;
 
 public class ShopFragment extends Fragment implements ShopListAdapter.ShopInterface {
-
+   private static final String TAG = "ShopFragment";
     FragmentShopBinding fragmentShopBinding;
     private ShopListAdapter shopListAdapter;
     private ShopViewModel shopViewModel;
+    private NavController navController;
 
     public ShopFragment() {
         // Required empty public constructor
@@ -48,7 +50,7 @@ public class ShopFragment extends Fragment implements ShopListAdapter.ShopInterf
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        shopListAdapter = new ShopListAdapter();
+        shopListAdapter = new ShopListAdapter(this);
         fragmentShopBinding.shopRecyclerView.setAdapter(shopListAdapter);
         fragmentShopBinding.shopRecyclerView.addItemDecoration(new DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL));
         fragmentShopBinding.shopRecyclerView.addItemDecoration(new DividerItemDecoration(requireContext(), DividerItemDecoration.HORIZONTAL));
@@ -61,17 +63,31 @@ public class ShopFragment extends Fragment implements ShopListAdapter.ShopInterf
             }
         });
 
-
+        navController = Navigation.findNavController(view);
 }
 
     @Override
     public void addItem(Product product) {
-
+        boolean isAdded = shopViewModel.addItemToCart(product);
+        if (isAdded) {
+            Snackbar.make(requireView(), product.getName() + " added to cart.", Snackbar.LENGTH_LONG)
+                    .setAction("Checkout", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            navController.navigate(R.id.action_shopFragment_to_cartFragment);
+                        }
+                    })
+                    .show();
+        } else {
+            Snackbar.make(requireView(), "Already have the max quantity in cart.", Snackbar.LENGTH_LONG)
+                    .show();
+        }
     }
 
     @Override
     public void onItemClick(Product product) {
-
+        shopViewModel.setProduct(product);
+        navController.navigate(R.id.action_shopFragment_to_productDetailFragment);
     }
 }
 

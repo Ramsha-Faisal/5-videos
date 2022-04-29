@@ -7,13 +7,19 @@
         <variable
             name="product"
             type="com.example.myapplication.models.Product" />
+        <variable
+            name="shopInterface"
+            type="com.example.myapplication.adapters.ShopListAdapter.ShopInterface" />
+
 
     </data>
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:onClick="@{() -> shopInterface.onItemClick(product)}">
 
         <ImageView
             android:id="@+id/cakes_n_bakes_1"
@@ -58,7 +64,8 @@
             android:layout_gravity="center"
             android:enabled="@{product.available}"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
-            style="@style/Widget.MaterialComponents.Button.TextButton" />
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:onClick="@{() -> shopInterface.addItem(product)}"/>
     </LinearLayout>
 </layout>
 
